@@ -12,7 +12,7 @@ class TestFillHour(unittest.TestCase):
 
     def test_fill_hour(self):
         hours_page = self.page.login_as(my_user, my_user)
-        hours_page.fillHours(my_project, my_hours, my_notes)
+        hours_page.fill_hours(my_project, my_hours, my_notes)
 
     def tearDown(self):
         time.sleep(1)

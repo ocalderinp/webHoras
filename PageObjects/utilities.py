@@ -9,7 +9,7 @@ def get_page(remote, browser, url):
         return launch(webdriver.Remote("http://" + remote.lower() + ":4444/wd/hub",
                                        eval("webdriver.DesiredCapabilities." + browser.upper())), url)
     else:
-        return launch(select_browser(webdriver, browser[0].upper() + browser[1:]), url)
+        return launch(select_browser(browser[0].upper() + browser[1:]), url)
 
 
 def launch(driver, url):
@@ -19,7 +19,7 @@ def launch(driver, url):
     return LoginPage(driver)
 
 
-def select_browser(webdriver, my_browser):
+def select_browser(my_browser):
     the_browser = eval('webdriver.' + my_browser + '(' + ')')
     the_browser.maximize_window()
     return the_browser
@@ -41,24 +41,26 @@ def arg_parse(alist):
     my_project = ''
     my_hours = ''
     my_notes = ''
-    cont = 1
+    cont = len(alist)
+    print("listaaaa: " + len(alist).__str__())
     while len(alist) > 1:
         arg_var = alist.pop()
-        if cont == 1:
-            my_user = arg_var
-            cont = cont + 1
-        elif cont == 2:
-            my_project = arg_var
-            cont = cont + 1
-        elif cont == 3:
-            my_hours = arg_var
-            cont = cont + 1
-        elif cont == 4:
-            my_notes = arg_var
-            cont = cont + 1
-        elif cont == 5:
+        print(str(arg_var))
+        if cont == 6:
             my_browser = arg_var
-            cont = cont + 1
+            cont = cont - 1
+        elif cont == 5:
+            my_notes = arg_var
+            cont = cont - 1
+        elif cont == 4:
+            my_hours = arg_var
+            cont = cont - 1
+        elif cont == 3:
+            my_project = arg_var
+            cont = cont - 1
+        elif cont == 2:
+            my_user = arg_var
+            cont = cont - 1
 
     return my_remote, my_browser, my_url, my_user, my_project, my_hours, my_notes
 

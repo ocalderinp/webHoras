@@ -19,5 +19,4 @@ class LoginPage(PageObject):
         return HoursPage(self.w)
 
     def stop(self):
-        time.sleep(2)
         self.w.quit()
