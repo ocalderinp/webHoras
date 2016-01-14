@@ -2,7 +2,5 @@
 Para instalar ejecutar
 pip install -r requirement.txt
 
-
 Para ejecutar 
-
-python fillHours.py http://webhoras.abstracta.com.uy/login.php chrome
+python fillHours.py user project hours notes browser[optional]
