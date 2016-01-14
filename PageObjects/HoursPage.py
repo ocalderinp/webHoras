@@ -17,13 +17,13 @@ class HoursPage(PageObject):
     dateHeader = PageElement(class_name="CalendarHeader")
     noteText = PageElement(id_="note")
 
-
-    def fillHours(self, project, hours, notes):
+    def fill_hours(self, project, hours, notes):
         self.go_today()
         self.set_project(project)
         self.set_hours(hours)
         self.set_notes(notes)
         self.submit()
+        self.logout()
 
     def set_start_hour(self):
         self.buttonStart.click()
@@ -91,6 +91,10 @@ class HoursPage(PageObject):
     def submit(self):
         self.buttonSubmit.click()
 
+    def logout(self):
+        from MainMenu import MainMenu
+        MainMenu(self.w).logout()
+
     def set_project(self, project):
         select = Select(self.selectProject)
         select.select_by_visible_text(project)
@@ -100,7 +104,15 @@ class HoursPage(PageObject):
         self.set_project(project)
         self.set_hours("8:00")
         self.submit()
+        self.logout()
 
+    def go_to_profile(self):
+        menu = self.get_sub_menu()
+        menu.go_to_reports()
+
+    def get_sub_menu(self):
+        from SubMenu import SubMenu
+        return SubMenu(self.w)
 
 
 

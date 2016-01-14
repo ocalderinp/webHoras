@@ -1,11 +1,12 @@
 from page_objects import PageElement, PageObject
+import time
 from utilities import wait_for_window
+
 
 class LoginPage(PageObject):
     textUsername = PageElement(id_="login")
     textPassword = PageElement(id_="password")
     buttonLogin = PageElement(id_="btn_login")
-
 
     def login_as(self, username, password):
         self.textUsername.clear()
@@ -18,4 +19,5 @@ class LoginPage(PageObject):
         return HoursPage(self.w)
 
     def stop(self):
+        time.sleep(2)
         self.w.quit()

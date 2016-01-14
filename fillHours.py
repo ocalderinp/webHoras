@@ -2,21 +2,17 @@ import time
 import unittest
 
 
-from Pages.utilities import get_page, arg_parse, get_tasks_list
+from PageObjects.utilities import get_page, arg_parse
 
 
 class TestFillHour(unittest.TestCase):
 
     def setUp(self):
-        self.page = get_page(myRemote, myBrowser, myUrl)
+        self.page = get_page(my_remote, my_browser, my_url)
 
     def test_fill_hour(self):
-        hours_page = self.page.login_as("oscar.calderin", "oscar.calderin")
-        tasks = get_tasks_list("horas.xls")
-        for task in tasks:
-            print("taskkkkkk: " + str(task))
-            hours_page.fillHours(task[0], task[1], tasks[2])
-
+        hours_page = self.page.login_as(my_user, my_user)
+        hours_page.fillHours(my_project, my_hours, my_notes)
 
     def tearDown(self):
         time.sleep(1)
@@ -24,5 +20,5 @@ class TestFillHour(unittest.TestCase):
 
 if __name__ == "__main__":
     import sys
-    myRemote, myBrowser, myUrl = arg_parse(sys.argv)
+    my_remote, my_browser, my_url, my_user, my_project, my_hours, my_notes = arg_parse(sys.argv)
     unittest.main()
