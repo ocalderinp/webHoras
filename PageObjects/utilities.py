@@ -100,5 +100,5 @@ def wait_not_for_window(myobj, msg):
 #         for cell in range(cols):
 #             values.append(str(sheet.cell(row, cell).value))
 #             tasks.append(values)
-#     print("mierdaaaa: " + len(tasks).__str__())
+#     print("cant: " + len(tasks).__str__())
 #     return tasks
